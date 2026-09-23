@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<student>
+    <dateOfBirth>2026-09-18</dateOfBirth>
+    <Name>Harry Styles</Name>
+    <exam>
+        <grade>3</grade>
+        <description>WMC</description>
+    </exam>
+    <exam>
+        <grade>2</grade>
+        <description>POS</description>
+    </exam>
+    <exam>
+        <grade>1</grade>
+        <description>DBI</description>
+    </exam>
+</student>
