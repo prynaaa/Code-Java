@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<student>
+    <dateOfBirth>2026-09-18T08:54:36.727093</dateOfBirth>
+    <Name>Harry Styles</Name>
+    <exams>
+        <exam>
+            <theGrade>2</theGrade>
+            <theDescription>GGP</theDescription>
+        </exam>
+        <exam>
+            <theGrade>3</theGrade>
+            <theDescription>Deutsch</theDescription>
+        </exam>
+    </exams>
+</student>

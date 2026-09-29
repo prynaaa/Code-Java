@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student>
+    <dateOfBirth>2026-09-18T08:54:36.727+02:00</dateOfBirth>
+    <exams>
+        <exam>
+            <theDescription>GGP</theDescription>
+            <theGrade>2</theGrade>
+        </exam>
+        <exam>
+            <theDescription>Deutsch</theDescription>
+            <theGrade>3</theGrade>
+        </exam>
+    </exams>
+    <Name>Josef Peritsch</Name>
+</student>
