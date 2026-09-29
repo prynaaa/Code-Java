@@ -4,11 +4,17 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import jakarta.xml.bind.JAXBException;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Marker;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
+@Slf4j
 public enum Worker {
     INSTANCE;
 
@@ -20,6 +26,7 @@ public enum Worker {
     );
 
     public DataHolder unmarshalling(String fileName) throws JAXBException {
+        log.info("Start unmarshalling...");
         JAXBContext context = JAXBContext.newInstance(DataHolder.class);
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -30,6 +37,7 @@ public enum Worker {
     }
 
     public void marshalling(String newFileName, DataHolder dataHolder) throws JAXBException {
+        log.info("Start marshalling...");
         JAXBContext context = JAXBContext.newInstance(DataHolder.class);
 
         Marshaller marshaller = context.createMarshaller();
