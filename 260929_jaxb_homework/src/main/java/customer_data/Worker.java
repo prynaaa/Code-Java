@@ -7,7 +7,9 @@ import jakarta.xml.bind.JAXBException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Worker {
+public enum Worker {
+    INSTANCE;
+
     private static Path path = Paths.get(
             System.getProperty("user.dir"),
             "src",
@@ -26,10 +28,9 @@ public class Worker {
     }
 
     static void main() {
-        Worker worker = new Worker();
         try {
 
-            DataHolder dataHolder = worker.unmarshalling("customer_data.xml");
+            DataHolder dataHolder = Worker.INSTANCE.unmarshalling("customer_data.xml");
 
             System.out.println(dataHolder);
 
