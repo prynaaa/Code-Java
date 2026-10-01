@@ -49,6 +49,7 @@ public enum XmlAccess {
 
     static void main() {
         XmlAccess xmlAccess = XmlAccess.INSTANCE;
+        xmlAccess.getDataHolder().loadCitiesIntoCustomer();
         System.out.println(xmlAccess.getDataHolder());
     }
 }

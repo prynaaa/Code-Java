@@ -1,17 +1,3 @@
-/*
-<cityId>0</cityId>
-<cityName>Skoútari</cityName>
-<Customers>
-    <Customer>
-        <dateOfBirth>2004-01-23</dateOfBirth>
-        <firstname>Kora</firstname>
-        <gender>Female</gender>
-        <lastname>Crossman</lastname>
-    </Customer>
-</Customers>
-<postalCode></postalCode>
- */
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

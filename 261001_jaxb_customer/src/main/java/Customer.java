@@ -1,12 +1,3 @@
-/*
-<Customer>
-    <dateOfBirth>2004-01-23</dateOfBirth>
-    <firstname>Kora</firstname>
-    <gender>Female</gender>
-    <lastname>Crossman</lastname>
-</Customer>
- */
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -24,6 +15,16 @@ public class Customer {
     @XmlElement
     private String dateOfBirth; // Date: 2004-01-23
 
-    // HOMEWORK: add the city to the customer
     private City city;
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", city=" + city.getName() +
+                '}';
+    }
 }

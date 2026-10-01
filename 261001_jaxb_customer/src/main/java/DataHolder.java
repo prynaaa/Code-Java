@@ -11,4 +11,13 @@ public class DataHolder {
     @XmlElement(name = "Country")
     private List<Country> countries;
 
+    public void loadCitiesIntoCustomer(){
+        for(Country country : countries){
+            for(City city : country.getCities()){
+                for(Customer customer : city.getCustomers()){
+                    customer.setCity(city);
+                }
+            }
+        }
+    }
 }
