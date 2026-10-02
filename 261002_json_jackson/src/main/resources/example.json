@@ -1,0 +1,17 @@
+{
+  "firstname": "Alex",
+  "lastname": "Colorful",
+  "dateOfBirth": "14.03.1879",
+  "children": [
+    {
+      "firstname": "mini",
+      "lastname": "Colorful",
+      "dateOfBirth": "30.11.1900"
+    },
+    {
+      "firstname": "mono",
+      "lastname": "Colorful",
+      "dateOfBirth": "01.05.1902"
+    }
+  ]
+}
