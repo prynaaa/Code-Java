@@ -1,10 +1,18 @@
 package examples;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import pojos.Person;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+@Log
 public class JsonExamples {
 
     public static void _01_simpleJson() {
@@ -135,12 +143,39 @@ public class JsonExamples {
             ex.printStackTrace();
         }
 
+        for(Person person : p.getChildren()){
+            person.setParent(p);
+        }
+
         System.out.println(p);
+    }
+
+    public static void _05_fromFile() {
+        try {
+            List<Person> people = new ArrayList<>();
+
+            InputStream jsonStream = JsonExamples.class.getResourceAsStream("../resources/persons.json");
+            if(jsonStream == null){
+                throw new IllegalArgumentException("person.json not found");
+            }
+
+            ObjectMapper mapper = new ObjectMapper()
+                    .registerModule(new JavaTimeModule());
+
+            people = mapper
+                    .readerForListOf(Person.class)
+                    .readValue(jsonStream);
+        } catch (Exception e) {
+            log.warning(e.getMessage());
+            log.info("read file failed");
+        }
     }
 
     static void main() {
         // JsonExamples._01_simpleJson();
         // JsonExamples._02_simpleJson();
-        JsonExamples._03_notSoSimpleJson();
+        // JsonExamples._03_notSoSimpleJson();
+        // JsonExamples._04_moreNotSoSimpleJson();
+        JsonExamples._05_fromFile();
     }
 }
