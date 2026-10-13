@@ -17,4 +17,9 @@ public class Demo {
     public void methodWithParameterName() {
         System.out.println("Method with parameter");
     }
+
+    @NoahParameter(listOfFloats = {2f, 3f, 4f})
+    public void methodWithParamList() {
+        System.out.println("Method with parameter list");
+    }
 }

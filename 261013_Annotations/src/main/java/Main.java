@@ -1,4 +1,5 @@
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class Main {
     static void main() {
@@ -40,6 +41,8 @@ public class Main {
                 System.out.println("- Value: " + parameter.name());
                 // added a new parameter to annotation called value
                 System.out.println("- Value: " + parameter.value());
+                // added a float list parameter
+                System.out.println("- Value: " + Arrays.toString(parameter.listOfFloats()));
             }
         }
 
