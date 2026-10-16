@@ -24,7 +24,7 @@ public class PropertyLoader {
 
     private void loadFile() throws IOException {
         /*
-        your turn: 40'
+        TO-DO:
         1. path [done]
         2. load properties
         3. store
