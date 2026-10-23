@@ -60,11 +60,18 @@ public class EntityManager {
         sql.append(" (");
 
         for(Field field : clazz.getDeclaredFields()){
-            sql.append(field.getName());
+            sql.append(field.getType().getSimpleName());
             sql.append(", ");
         }
 
         log.info(sql.toString());
+
+        /* TODO:
+        - finish the implementation of create table
+        - add the annotation 'column' to set a new database column name
+        - @column(name = "the_id")
+         */
+
     }
 
     static void main() {
