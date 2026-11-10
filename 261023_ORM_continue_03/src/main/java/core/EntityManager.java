@@ -69,7 +69,11 @@ public class EntityManager {
             if (Modifier.isStatic(field.getModifiers()) || field.isSynthetic()) {
                 continue;
             }
-            columns.add(columnName(field) + " " + columnDefinition(field));
+            if(field.isAnnotationPresent(Id.class)) {
+                columns.add(columnName(field) + " " + columnDefinition(field));
+            } else {
+                columns.add(columnName(field) + " " + columnDefinition(field));
+            }
         }
 
         if (columns.isEmpty()) {
@@ -118,6 +122,7 @@ public class EntityManager {
         if (type == LocalDateTime.class) return "TIMESTAMP";
         throw new IllegalArgumentException("Unsupported field type: " + type.getName());
     }
+
     public static String insertIntoSQL(Class<?> clazz, Object entity) {
         if (!clazz.isAnnotationPresent(Entity.class)) {
             throw new IllegalArgumentException(clazz.getName() + " is not annotated with @Entity");
@@ -132,12 +137,16 @@ public class EntityManager {
             }
 
             field.setAccessible(true);
-            columns.add(columnName(field));
+            if(!field.isAnnotationPresent(Id.class)) {
+                columns.add(columnName(field));
+            }
 
             try {
                 Object value = field.get(entity);
                 if(value != null) {
                     values.add("'" + value.toString().replace("'", "''") + "'");
+                } else {
+                    // values.add("NULL");
                 }
             } catch (Exception e) {
                 throw new RuntimeException("Failed to read field: " + field.getName(), e);
@@ -148,15 +157,17 @@ public class EntityManager {
             throw new IllegalArgumentException(clazz.getName() + " has no persistent fields");
         }
 
-        log.info("Insert into " + entity.toString());
+        // log.info("Insert into " + entity.toString());
         return "INSERT INTO " + tableName(clazz)
                 + " (" + String.join(", ", columns) + ")"
                 + " VALUES (" + String.join(", ", values) + ")";
     }
 
+    /* JUST CHECK VIA TERMINAL
     public void showTable(Class<?> clazz) {
         execute("SELECT * FROM " + clazz.getSimpleName());
     }
+     */
 
     public void persist(Object entity){
         dropTable(tableName(entity.getClass()));

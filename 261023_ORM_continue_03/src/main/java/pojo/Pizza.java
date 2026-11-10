@@ -12,6 +12,7 @@ import lombok.Data;
 public class Pizza {
     @Id
     public Long id;
+    @Column(name="name")
     public String name;
     @Column(name="quanta_costa")
     public float price;
