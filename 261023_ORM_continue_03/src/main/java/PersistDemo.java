@@ -1,4 +1,5 @@
 import core.EntityManager;
+import pojo.Gulasch;
 import pojo.Pizza;
 
 import java.io.IOException;
@@ -10,8 +11,15 @@ public class PersistDemo {
                 .price(12.50f)
                 .build();
 
+        Gulasch gulasch = Gulasch.builder()
+                .name("Gulasch")
+                .size("Groß")
+                .price(14.25f)
+                .build();
+
         EntityManager em = EntityManager.getInstance();
         em.persist(pizza);
+        em.persist(gulasch);
         // em.showTable(Pizza.class);
     }
 }
