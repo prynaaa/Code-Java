@@ -1,8 +1,11 @@
 import core.EntityManager;
 import pojo.Gulasch;
 import pojo.Pizza;
+import pojo.Schnitzel;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PersistDemo {
     static void main() throws Exception {
@@ -23,9 +26,15 @@ public class PersistDemo {
                 .price(11.75f)
                 .build();
 
+        Schnitzel schnitzel = Schnitzel.builder()
+                .name("Schnitzel (Schwein)")
+                .cookedOn(LocalDateTime.now())
+                .build();
+
         EntityManager em = EntityManager.getInstance();
         em.persist(pizza);
         em.persist(gulaschSuppe);
         em.persist(gulasch);
+        em.persist(schnitzel);
     }
 }
